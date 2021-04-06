@@ -29,13 +29,14 @@ public class MainActivity extends AppCompatActivity {
      //   mTxtSensors.setMovementMethod(new ScrollingMovementMethod());
         button = findViewById(R.id.retrieve_sensors_btn);
 
-
+        sensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE); // 가져 온다
+        sensorList = sensorMgr.getSensorList(Sensor.TYPE_ALL);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE); // 가져 온다
-                sensorList = sensorMgr.getSensorList(Sensor.TYPE_ALL);
+
+
 
                 mTxtSensors.append("(# Sensors : " + sensorList.size() + ")\n\n");
                 for(Sensor sensor : sensorList){
@@ -44,5 +45,6 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+
     }
 }
